@@ -33,10 +33,12 @@ for element in data_file_in:
 data_file_in.close()
 
 with open("p4-peers.csv", "w") as file:
+    #[:-19] gets rid of the IP/port stuff
     for priv_node, public_nodes in priv_dict.items():
-        file_string = (str(priv_node) + ", ")
+        file_string = (str(priv_node[:-19]) + ", ")
         for ele in public_nodes:
-            file_string += str(ele)
+            file_string += str(ele[:-19])
+
             file_string += ", "
         file_string = file_string[:-2]
         file_string += "\n"

@@ -77,14 +77,13 @@ priv_nodes_file = open("p4-peers.csv", "r")
 for nodes in priv_nodes_file:
     node_info = nodes.split(',')
 
-    priv_node = node_info[0][:-19]
+    priv_node = node_info[0]
 
     element_size = len(node_info)
 
     tmp_array = []
     for i in range(1, element_size):
         public_node = node_info[i]
-        public_node = public_node[:-19]
         #last one has a newline on it
         if i == (element_size-1):
             public_node = public_node[:-1]
@@ -98,10 +97,10 @@ for nodes in priv_nodes_file:
 
 priv_nodes_file.close()
 
-file_number = str(99)
+file_number = str(203)
 file_name = "transcript_" + file_number + ".txt"
 
-csv_file_name = "transcript_" + file_number + "_4_c.csv"
+csv_file_name = "p4-friends.csv"
 #this deletes the stuff in the csv file
 open(csv_file_name, 'w').close()
 
