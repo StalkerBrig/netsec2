@@ -2,8 +2,14 @@ public_dict = {}
 priv_dict = {}
 current_public_id = -1
 
-priv_nodes_file = open("privatepeers.txt", "r")
+target_file = open("part4targets.txt", "r")
 
+priv_target_array = []
+for target in target_file:
+    priv_target_array.append(target[:-1])
+
+
+priv_nodes_file = open("privatepeers.txt", "r")
 
 for element in priv_nodes_file:
     priv_node = element[:-1]
@@ -35,11 +41,13 @@ data_file_in.close()
 with open("p4-peers.csv", "w") as file:
     #[:-19] gets rid of the IP/port stuff
     for priv_node, public_nodes in priv_dict.items():
-        file_string = (str(priv_node[:-19]) + ", ")
-        for ele in public_nodes:
-            file_string += str(ele[:-19])
+        if priv_node[:-19] in priv_target_array:
+            file_string = (str(priv_node[:-19]) + ", ")
 
-            file_string += ", "
-        file_string = file_string[:-2]
-        file_string += "\n"
-        file.write(file_string)
+            for ele in public_nodes:
+                file_string += str(ele[:-19])
+
+                file_string += ", "
+            file_string = file_string[:-2]
+            file_string += "\n"
+            file.write(file_string)

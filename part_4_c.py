@@ -100,7 +100,7 @@ priv_nodes_file.close()
 file_number = str(203)
 file_name = "transcript_" + file_number + ".txt"
 
-csv_file_name = "p4-friends.csv"
+csv_file_name = "p4-friends_send_receive.csv"
 #this deletes the stuff in the csv file
 open(csv_file_name, 'w').close()
 
